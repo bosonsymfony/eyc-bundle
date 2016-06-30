@@ -86,7 +86,7 @@ class NomencladorController extends Controller
             $response->headers->add(array('Access-Control-Allow-Origin' => '*'));
             return $response;
         } else {
-            return new Response('404 GET: El recurso solicitado con el identificador ' . $id . ' no existe.');
+            return new Response('404 GET: El nomenclador solicitado con el identificador ' . $id . ' no existe.');
         }
     }
 
@@ -105,11 +105,11 @@ class NomencladorController extends Controller
         $existe = $em->getRepository('EyCBundle:Nomenclador')->findBy(array('nombre'=>$nombre));
 
         if($existe){
-            return new Response('400 POST: El recurso que intenta adicionar con el nombre '.$nombre.' ya exite');
+            return new Response('400 POST: El nomenclador que intenta adicionar con el nombre '.$nombre.' ya exite');
         }else{
              $result = $this->get('nomenclador')->insertarNom($nombre);
          if ($result == 1) {
-            return new Response('201 POST: El recurso se ha creado satisfactoriamente.');
+            return new Response('201 POST: El nomenclador se ha creado satisfactoriamente.');
         }
         return new Response('400 POST: Los datos enviados no son validos.');
         }
@@ -130,7 +130,7 @@ class NomencladorController extends Controller
         $existe = $em->getRepository('EyCBundle:Nomenclador')->findBy(array('nombre'=>$nombre));
 
         if($existe){
-            return new Response('400 POST: El recurso que intenta actualizar con el nombre '.$nombre.' ya exite');
+            return new Response('400 POST: Existe un campo con el mismo nombre');
 
         }else{
 
@@ -141,9 +141,9 @@ class NomencladorController extends Controller
             }
 
             if ($result == 1) {
-                return new Response('200 PUT: El recurso fue modificado satisfactoriamente.');
+                return new Response('200 PUT: El nomenclador fue modificado satisfactoriamente.');
             } else {
-                return new Response('404 PUT: El recurso solicitado con el identificador ' . $id . ' no existe.');
+                return new Response('404 PUT: El nomenclador solicitado con el identificador ' . $id . ' no existe.');
             }
         }
 
@@ -192,11 +192,11 @@ class NomencladorController extends Controller
 
         if ($result == 1) {
 
-            return new Response('200 Delete: El recurso se eliminó con exito');
+            return new Response('200 Delete: El nomenclador se eliminó con exito.');
 
         } else {
 
-            return new Response('404 Delete: El recurso solicitado con el identificador ' . $id . ' no existe.');
+            return new Response('404 Delete: El nomenclador solicitado con el identificador ' . $id . ' no existe.');
 
         }
 
@@ -235,7 +235,7 @@ class NomencladorController extends Controller
 
         if($existe){
 
-            return new Response('404 POST: El recurso que intenta adicionar con el nombre ' . $nombre . ' ya existe.');
+            return new Response('404 POST: Existe un campo con el mismo nombre');
 
         }else{
 
@@ -246,9 +246,9 @@ class NomencladorController extends Controller
             }
 
             if ($result == 1) {
-                return new Response('201 POST: El recurso se ha creado satisfactoriamente.');
+                return new Response('201 POST: El nomenclador se ha creado satisfactoriamente.');
             } else {
-                return new Response('404 POST: El recurso solicitado con el identificador ' . $idn . ' no existe.');
+                return new Response('404 POST: El nomenclador solicitado con el identificador ' . $idn . ' no existe.');
             }
         }
     }
@@ -288,9 +288,9 @@ class NomencladorController extends Controller
         }
 
         if ($result == 1) {
-            return new Response('200 PUT: El recurso fue modificado satisfactoriamente.');
+            return new Response('200 PUT: El nomenclador fue modificado satisfactoriamente.');
         } else {
-            return new Response('404 PUT: El recurso solicitado con el identificador ' . $idc . ' no existe.');
+            return new Response('404 PUT: El nomenclador solicitado con el identificador ' . $idc . ' no existe.');
         }
     }
 
@@ -305,9 +305,9 @@ class NomencladorController extends Controller
     {
         $result = $this->get('nomenclador')->eliminarCampoNom($id);
         if ($result == 1) {
-            return new Response('200 Delete: El recurso se eliminó con exito');
+            return new Response('200 Delete: El nomenclador se eliminó con exito');
         } else
-            return new Response('404 Delete: El recurso solicitado con el identificador ' . $id . ' no existe.');
+            return new Response('404 Delete: El nomenclador solicitado con el identificador ' . $id . ' no existe.');
     }
 
     /**
@@ -333,7 +333,7 @@ class NomencladorController extends Controller
             ->getQuery();
 
         if (count($camposnom) == 0 || $camposnom == NULL) {
-            return new Response('404 GET: El recurso solicitado con el identificador ' . $id . ' no existe.');
+            return new Response('404 GET: El nomenclador solicitado con el identificador ' . $id . ' no existe.');
         } else {
             $paginator = new Paginator($camposnom);
             $count = $paginator->count();
@@ -366,7 +366,7 @@ class NomencladorController extends Controller
             ->getQuery();
 
         if (count($camposnom) == 0 || $camposnom == NULL) {
-            return new Response('404 GET: El recurso solicitado con el identificador ' . $id . ' no existe.');
+            return new Response('404 GET: El nomenclador solicitado con el identificador ' . $id . ' no existe.');
         } else {
             $paginator = new Paginator($camposnom);
             $count = $paginator->count();
@@ -411,7 +411,7 @@ class NomencladorController extends Controller
             ->getArrayResult();
 
         if (count($camposnom) == 0 || $camposnom == NULL) {
-            return new Response('404 GET: El recurso solicitado con el identificador ' . $id . ' no existe.');
+            return new Response('404 GET: El nomenclador solicitado con el identificador ' . $id . ' no existe.');
         } else {
 
             $campoVinculados = array();
@@ -472,7 +472,7 @@ class NomencladorController extends Controller
                 return $response;
             }
         } else {
-            return new Response('404 GET: El recurso solicitado con el identificador ' . $id . ' no existe.');
+            return new Response('404 GET: El nomenclador solicitado con el identificador ' . $id . ' no existe.');
         }
     }
 
@@ -487,7 +487,7 @@ class NomencladorController extends Controller
     {
         $nomencop = $this->get('nomenclador')->mostrarNomeOp($idnop);
         if ($nomencop == false) {
-            return new Response('404 GET: El recurso solicitado con  identificador ' . $idnop . ' no existe.');
+            return new Response('404 GET: El nomenclador solicitado con  identificador ' . $idnop . ' no existe.');
         } else {
             $response = new Response($this->serialize($nomencop));
             $response->headers->add(array('Access-Control-Allow-Origin' => '*'));
@@ -555,7 +555,7 @@ class NomencladorController extends Controller
         $result = $this->get('nomenclador')->insertarNomOp($idn, $camposnom, $valores['valores']);
         switch ($result) {
             case 1:
-                return new Response('201 POST: El recurso se ha creado satisfactoriamente.');
+                return new Response('201 POST: El nomenclador se ha creado satisfactoriamente.');
                 break;
             case 2:
                 return new Response('400 POST: Los valores insertados no coincide con los campos del nomenclador.');
@@ -588,7 +588,7 @@ class NomencladorController extends Controller
 
         switch ($result) {
             case 1:
-                return new Response('200 PUT: El recurso fue modificado satisfactoriamente.');
+                return new Response('200 PUT: El nomenclador fue modificado satisfactoriamente.');
                 break;
             case 2:
                 return new Response('400 PUT: Los valores insertados no coincide con los campos del nomenclador.');
@@ -620,7 +620,7 @@ class NomencladorController extends Controller
         $result = $this->get('nomenclador')->eliminarNomOp($idnop);
         if ($result == 1) {
 
-            return new Response('200 Delete: El recurso se eliminó con exito');
+            return new Response('200 Delete: El nomenclador se eliminó con exito');
 
         } else
 

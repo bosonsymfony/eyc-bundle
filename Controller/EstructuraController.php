@@ -144,11 +144,11 @@ class EstructuraController extends Controller
 
 
         if ($existe) {
-            return new Response('400 POST: El recurso que intenta adicionar con el nombre ' . $nombre . ' ya exite');
+            return new Response('400 POST: La estructura que intenta adicionar con el nombre ' . $nombre . ' ya exite');
         } else {
             if (is_bool($raiz)) {
                 $this->get('estructura')->insertarEstruc($nombre, $raiz);
-                return new Response('201 POST: El recurso se ha creado satisfactoriamente.');
+                return new Response('201 POST: La estructura se ha creado satisfactoriamente.');
             } else {
                 return new Response('422 InvIntPUT: El sistema esperaba un booleano, y se recibió ' . $raiz . '.');
             }
@@ -182,7 +182,7 @@ class EstructuraController extends Controller
 
         if ($existe[0]['id'] != $id) {
 
-            return new Response('400 POST: El recurso que intenta actualizar con el nombre ' . $nombre . ' ya exite');
+            return new Response('400 POST: La estructura que intenta actualizar con el nombre ' . $nombre . ' ya exite');
 
         } else {
 
@@ -191,11 +191,11 @@ class EstructuraController extends Controller
 
                 if ($result == 1) {
 
-                    return new Response('200 PUT: El recurso fue modificado satisfactoriamente.');
+                    return new Response('200 PUT: La estructura fue modificado satisfactoriamente.');
 
                 } else {
 
-                    return new Response('404 PUT: El recurso solicitado con el identificador ' . $id . ' no existe.');
+                    return new Response('404 PUT: La estructura solicitado con el identificador ' . $id . ' no existe.');
 
                 }
             } else {
@@ -215,11 +215,11 @@ class EstructuraController extends Controller
         $result = $this->get('estructura')->eliminarEstruc($id);
         if ($result == 1) {
 
-            return new Response('200 Delete: El recurso se eliminó con exito');
+            return new Response('200 Delete: La estructura se eliminó con exito');
 
         } else {
 
-            return new Response(' 404 Delete: El recurso solicitado con el identificador ' . $id . ' no existe.');
+            return new Response(' 404 Delete: La estructura solicitado con el identificador ' . $id . ' no existe.');
 
         }
     }
@@ -238,13 +238,13 @@ class EstructuraController extends Controller
 
         switch ($result) {
             case 1:
-                return new Response('200 DELETE: El recurso se ha eliminado satisfactoriamente.');
+                return new Response('200 DELETE: La estructura se ha eliminado satisfactoriamente.');
                 break;
             case 2:
-                return new Response('400 DELETE: El recurso solicitado con id ' . $id_padre . ' no existe');
+                return new Response('400 DELETE: La estructura solicitado con id ' . $id_padre . ' no existe');
                 break;
             case 3:
-                return new Response('400 DELETE: El recurso solicitado con id ' . $id_hija . ' no existe');
+                return new Response('400 DELETE: La estructura solicitado con id ' . $id_hija . ' no existe');
                 break;
             case 4:
                 return new Response('400 DELETE: La estructura con id ' . $id_hija . ' no se encuentra entre las estructuras hijas de la estructura con id ' . $id_padre . ' .');
@@ -267,7 +267,7 @@ class EstructuraController extends Controller
         $result = $this->get('estructura')->insertarEstrucSub($id, $ids);
 
         if ($result == 4) {
-            return new Response('201 POST: El recurso se ha creado satisfactoriamente.');
+            return new Response('201 POST: La estructura se ha creado satisfactoriamente.');
         } else {
 
             if ($result == 1) {
@@ -306,7 +306,7 @@ class EstructuraController extends Controller
             return $response;
 
         } else {
-            return new Response('404 GET: El recurso solicitado con el identificador ' . $id . ' no existe.');
+            return new Response('404 GET: La estructura solicitado con el identificador ' . $id . ' no existe.');
         }
 
     }
@@ -387,7 +387,7 @@ class EstructuraController extends Controller
             $response->headers->add(array('Access-Control-Allow-Origin' => '*', 'order' => $order));
             return $response;
         } else {
-            return new Response('404 GET: El recurso solicitado con el identificador ' . $id . ' no existe.');
+            return new Response('404 GET: La estructura solicitado con el identificador ' . $id . ' no existe.');
         }
     }
 
@@ -435,7 +435,7 @@ class EstructuraController extends Controller
             $response->headers->add(array('Access-Control-Allow-Origin' => '*', 'order' => $order));
             return $response;
         } else {
-            return new Response('404 GET: El recurso solicitado con el identificador ' . $id . ' no existe.');
+            return new Response('404 GET: La estructura solicitado con el identificador ' . $id . ' no existe.');
         }
     }
 
@@ -493,7 +493,7 @@ class EstructuraController extends Controller
             $response->headers->add(array('Access-Control-Allow-Origin' => '*', 'order' => $order));
             return $response;
         } else {
-            return new Response('404 GET: El recurso solicitado con el identificador ' . $id . ' no existe.');
+            return new Response('404 GET: La estructura solicitado con el identificador ' . $id . ' no existe.');
         }
     }
 
@@ -523,7 +523,7 @@ class EstructuraController extends Controller
             $response->headers->add(array('Access-Control-Allow-Origin' => '*'));
             return $response;
         } else {
-            return new Response('404 GET: El recurso solicitado con el identificador ' . $id . ' no tiene padre.');
+            return new Response('404 GET: La estructura solicitado con el identificador ' . $id . ' no tiene padre.');
         }
     }
 
@@ -551,7 +551,7 @@ class EstructuraController extends Controller
             ->getQuery();
 
         if (count($camposestruc) == 0 || $camposestruc == NULL) {
-            return new Response('404 GET: El recurso solicitado con el identificador ' . $ide . ' no posee campos asociados.');
+            return new Response('404 GET: La estructura solicitado con el identificador ' . $ide . ' no posee campos asociados.');
         } else {
             $paginator = new Paginator($camposestruc);
             $count = $paginator->count();
@@ -583,7 +583,7 @@ class EstructuraController extends Controller
             ->getQuery();
 
         if (count($camposestruc) == 0 || $camposestruc == NULL) {
-            return new Response('404 GET: El recurso solicitado con el identificador ' . $ide . ' no posee campos asociados.');
+            return new Response('404 GET: La estructura solicitado con el identificador ' . $ide . ' no posee campos asociados.');
         } else {
             $paginator = new Paginator($camposestruc);
             $count = $paginator->count();
@@ -628,7 +628,7 @@ class EstructuraController extends Controller
             ->getArrayResult();
 
         if (count($camposnom) == 0 || $camposnom == NULL) {
-            return new Response('404 GET: El recurso solicitado con el identificador ' . $id . ' no existe.');
+            return new Response('404 GET: La estructura solicitado con el identificador ' . $id . ' no existe.');
         } else {
 
             $campoVinculados = array();
@@ -679,7 +679,7 @@ class EstructuraController extends Controller
 
         if ($existe) {
 
-            return new Response('404 POST: El recurso que intenta adicionar con el nombre ' . $nombre . ' ya existe.');
+            return new Response('404 POST: La estructura que intenta adicionar con el nombre ' . $nombre . ' ya existe.');
 
         } else {
 
@@ -690,9 +690,9 @@ class EstructuraController extends Controller
             }
 
             if ($result == 1) {
-                return new Response('201 POST: El recurso se ha creado satisfactoriamente.');
+                return new Response('201 POST: La estructura se ha creado satisfactoriamente.');
             } else {
-                return new Response('404 POST: El recurso solicitado con el identificador ' . $ide . ' no existe.');
+                return new Response('404 POST: La estructura solicitado con el identificador ' . $ide . ' no existe.');
             }
         }
     }
@@ -734,7 +734,7 @@ class EstructuraController extends Controller
 
         if ($resul == 1) {
 
-            return new Response('200 PUT: El recurso fue modificado satisfactoriamente.');
+            return new Response('200 PUT: La estructura fue modificado satisfactoriamente.');
         } else
             return new Response('404 PUT: El campo de la estructura  con el identificador ' . $idc . ' no existe.');
     }
@@ -750,7 +750,7 @@ class EstructuraController extends Controller
         $result = $this->get('estructura')->eliminarCampoEstruc($id);
         if ($result == 1) {
 
-            return new Response('200 Delete: El recurso se eliminó con exito');
+            return new Response('200 Delete: La estructura se eliminó con exito');
 
         } else {
 
@@ -797,7 +797,7 @@ class EstructuraController extends Controller
                 return $response;
             }
         } else {
-            return new Response('404 GET: El recurso solicitado con el identificador ' . $ide . ' no posee instancias.');
+            return new Response('404 GET: La estructura solicitado con el identificador ' . $ide . ' no posee instancias.');
         }
 
     }
@@ -824,7 +824,7 @@ class EstructuraController extends Controller
                 return $response;
             }
         } else {
-            return new Response('404 GET: El recurso solicitado con el identificador ' . $ide . ' no posee instancias.');
+            return new Response('404 GET: La estructura solicitado con el identificador ' . $ide . ' no posee instancias.');
         }
 
     }
@@ -886,7 +886,7 @@ class EstructuraController extends Controller
 
         switch ($result) {
             case 1:
-                return new Response('201 POST: El recurso se ha creado satisfactoriamente.');
+                return new Response('201 POST: La estructura se ha creado satisfactoriamente.');
                 break;
             case 2:
                 return new Response('400 POST: El valor del tipo de dato es incorrecto.');
@@ -926,7 +926,7 @@ class EstructuraController extends Controller
 
         switch ($result) {
             case 1:
-                return new Response('200 PUT: El recurso fue modificado satisfactoriamente.');
+                return new Response('200 PUT: La estructura fue modificado satisfactoriamente.');
                 break;
             case 2:
                 return new Response('400 PUT: El arreglo de valores no coincide con los campos de la estructura.');
@@ -957,7 +957,7 @@ class EstructuraController extends Controller
     {
         $result = $this->get('estructura')->eliminarEstrucOp($id);
         if ($result == 1) {
-            return new Response('200 Delete: El recurso se eliminó con exito');
+            return new Response('200 Delete: La estructura se eliminó con exito.');
         } else
 
             return new Response('404 Delete: El campo de la estructura  con el identificador ' . $id . ' no existe.');

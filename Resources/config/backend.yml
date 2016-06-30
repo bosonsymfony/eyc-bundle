@@ -1,7 +1,7 @@
 config_route: eyc_app_config
 menu:
     eyc:
-        title: Eyc
+        title: Estructura y composición
         type: toggle
         icon: 'mdi mdi-view-quilt'
         includes: eyc
