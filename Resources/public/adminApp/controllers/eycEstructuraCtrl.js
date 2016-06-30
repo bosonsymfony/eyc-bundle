@@ -569,7 +569,7 @@ angular.module('app')
                 }
             }
             plantilla += '<div class="md-actions">' +
-            '<md-button class="md-primary md-raised" ng-disabled="!instancia.$valid ||instancia.double.$error.pattern || disab" ng-click="add(); des();">Adicionar</md-button>' +
+            '<md-button class="md-primary md-raised" ng-disabled="!instancia.$valid ||instancia.double.$error.pattern || disab" ng-click="add(); des();">Aceptar</md-button>' +
             '<md-button class="md-raised" ng-disabled="!instancia.$valid ||instancia.double.$error.pattern || disab" ng-click="aplicar(); des();">Aplicar</md-button>' +
             '<md-button class="md-primary" ng-click="cancel()">Cancelar</md-button>' +
             '</div>' +
@@ -936,7 +936,7 @@ angular.module('app')
                 }
             }
             plantilla += '<div class="md-actions">' +
-            '<md-button class="md-primary md-raised" ng-disabled="!instancia.$valid || disab" ng-click="modificar(); des();">Modificar</md-button>' +
+            '<md-button class="md-primary md-raised" ng-disabled="!instancia.$valid || disab" ng-click="modificar(); des();">Aceptar</md-button>' +
             '<md-button class="md-primary" ng-click="cancel()">Cancelar</md-button>' +
             '</div>' +
             '</form>' +

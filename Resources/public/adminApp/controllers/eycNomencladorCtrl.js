@@ -150,12 +150,11 @@ angular.module('app')
                 '</md-button>' +
                 '</div>' +
                 '</md-toolbar>' +
-                '<md-content layout-padding>' +
                 '<div>' +
                 '<form>' +
-                '<p>¿Confirma que desea eliminar el nomenclador?</p>' +
+                '<p>¿Está seguro que desea eliminar el elemento seleccionado?</p>' +
                 '<div class="md-actions">' +
-                '<md-button class="md-primary md-raised" ng-disabled="disab" ng-click="delete(); des();">Eliminar</md-button>' +
+                '<md-button class="md-primary md-raised" ng-disabled="disab" ng-click="delete(); des();">Aceptar</md-button>' +
                 '<md-button class="md-primary" ng-click="cancel()">Cancelar</md-button>' +
                 '</div>' +
                 '</form>' +
@@ -383,7 +382,7 @@ angular.module('app')
                         '</md-input-container>';
 
                     plantilla += '<div class="md-actions">' +
-                    '<md-button class="md-primary md-raised" ng-disabled="!campo.$valid || disab ||campo.nombre.$error.pattern" ng-click="add(); des();">Adicionar</md-button>' +
+                    '<md-button class="md-primary md-raised" ng-disabled="!campo.$valid || disab ||campo.nombre.$error.pattern" ng-click="add(); des();">Aceptar</md-button>' +
                     '<md-button class="md-raised" ng-disabled="!campo.$valid || disab ||campo.nombre.$error.pattern" ng-click="aplicar(); des();">Aplicar</md-button>' +
                     '<md-button class="md-primary" ng-click="cancel()">Cancelar</md-button>' +
                     '</div>' +
@@ -581,7 +580,7 @@ angular.module('app')
                         '</div>' +
                         '</md-input-container>' +
                         '<div class="md-actions">' +
-                        '<md-button class="md-primary md-raised" ng-disabled="!campo.$valid || disab ||campo.nombre.$error.pattern" ng-click="modificar(); des();">Modificar</md-button>' +
+                        '<md-button class="md-primary md-raised" ng-disabled="!campo.$valid || disab ||campo.nombre.$error.pattern" ng-click="modificar(); des();">Aceptar</md-button>' +
                         '<md-button class="md-primary" ng-click="cancel()">Cancelar</md-button>' +
                         '</div>' +
                         '</form>' +
@@ -703,9 +702,9 @@ angular.module('app')
                         '<md-content layout-padding>' +
                         '<div>' +
                         '<form>' +
-                        '<p>¿Confirma que desea eliminar el(los) campo(s)?</p>' +
+                        '<p>¿Está seguro que desea eliminar el(los) elemento(s) seleccionado(s)?</p>' +
                         '<div class="md-actions">' +
-                        '<md-button class="md-primary md-raised" ng-click="delete()">Eliminar</md-button>' +
+                        '<md-button class="md-primary md-raised" ng-click="delete()">Aceptar</md-button>' +
                         '<md-button class="md-primary" ng-click="cancel()">Cancelar</md-button>' +
                         '</div>' +
                         '</form>' +
@@ -962,7 +961,7 @@ angular.module('app')
                 '</div>' +
                 '</md-input-container>' +
                 '<div class="md-actions">' +
-                '<md-button class="md-primary md-raised" ng-disabled="!form.$valid || disab ||form.nombreNomenclador.$error.pattern" ng-click="add(); des();">Adicionar</md-button>' +
+                '<md-button class="md-primary md-raised" ng-disabled="!form.$valid || disab ||form.nombreNomenclador.$error.pattern" ng-click="add(); des();">Aceptar</md-button>' +
                 '<md-button class="md-raised" ng-disabled="!form.$valid || disab ||form.nombreNomenclador.$error.pattern" ng-click="aplicar(); des();">Aplicar</md-button>' +
                 '<md-button class="md-primary" ng-click="cancel()">Cancelar</md-button>' +
                 '</div>' +
@@ -1075,7 +1074,7 @@ angular.module('app')
                 '</div>' +
                 '</md-input-container>' +
                 '<div class="md-actions">' +
-                '<md-button class="md-primary md-raised" ng-disabled="!form.$valid || disab ||form.nombreNomenclador.$error.pattern" ng-click="modificar(); des();">Modificar</md-button>' +
+                '<md-button class="md-primary md-raised" ng-disabled="!form.$valid || disab ||form.nombreNomenclador.$error.pattern" ng-click="modificar(); des();">Aceptar</md-button>' +
                 '<md-button class="md-primary" ng-click="cancel()">Cancelar</md-button>' +
                 '</div>' +
                 '</form>' +
@@ -1331,7 +1330,7 @@ angular.module('app')
                 }
             }
             plantilla += '<div class="md-actions">' +
-            '<md-button class="md-primary md-raised" ng-disabled="!instancia.$valid ||instancia.double.$error.pattern || disab" ng-click="add(); des();">Adicionar</md-button>' +
+            '<md-button class="md-primary md-raised" ng-disabled="!instancia.$valid ||instancia.double.$error.pattern || disab" ng-click="add(); des();">Aceptar</md-button>' +
             '<md-button class="md-raised" ng-disabled="!instancia.$valid ||instancia.double.$error.pattern || disab" ng-click="aplicar(); des();">Aplicar</md-button>' +
             '<md-button class="md-primary" ng-click="cancel()">Cancelar</md-button>' +
             '</div>' +
@@ -1526,9 +1525,9 @@ angular.module('app')
                 '<md-content layout-padding>' +
                 '<div>' +
                 '<form>' +
-                '<p>¿Confirma que desea eliminar la(s) instancia(s) del nomenclador?</p>' +
+                '<p>¿Está seguro que desea eliminar el(los) elemento(s) seleccionado(s)?</p>' +
                 '<div class="md-actions">' +
-                '<md-button class="md-primary md-raised" ng-click="delete()">Eliminar</md-button>' +
+                '<md-button class="md-primary md-raised" ng-click="delete()">Aceptar</md-button>' +
                 '<md-button class="md-primary" ng-click="cancel()">Cancelar</md-button>' +
                 '</div>' +
                 '</form>' +
@@ -1695,7 +1694,7 @@ angular.module('app')
                 }
             }
             plantilla += '<div class="md-actions">' +
-            '<md-button class="md-primary md-raised" ng-disabled="!instancia.$valid || disab" ng-click="modificar(); des();">Modificar</md-button>' +
+            '<md-button class="md-primary md-raised" ng-disabled="!instancia.$valid || disab" ng-click="modificar(); des();">Aceptar</md-button>' +
             '<md-button class="md-primary" ng-click="cancel()">Cancelar</md-button>' +
             '</div>' +
             '</form>' +
