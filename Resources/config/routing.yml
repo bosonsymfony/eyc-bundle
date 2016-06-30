@@ -1,0 +1,14 @@
+eyc:
+    resource: @EyCBundle/Controller/
+    type: annotation
+
+#ey_c_estructura:
+#    prefix:   /
+#    type:     annotation
+#    resource: "@EyCBundle/Controller/EstructuraController.php"
+#
+#ey_c_nomenclador:
+#    prefix:   /
+#    type:     annotation
+#    resource: "@EyCBundle/Controller/NomencladorController.php"
+

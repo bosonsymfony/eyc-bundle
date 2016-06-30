@@ -1,0 +1,7 @@
+services:
+    estructura:
+        class: UCI\Boson\EyCBundle\Service\EstructuraService
+        arguments: ["@doctrine", "@validator"]
+    nomenclador:
+        class: UCI\Boson\EyCBundle\Service\NomencladorService
+        arguments: ["@doctrine", "@validator"]

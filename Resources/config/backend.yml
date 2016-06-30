@@ -1,0 +1,20 @@
+config_route: eyc_app_config
+menu:
+    eyc:
+        title: Eyc
+        type: toggle
+        icon: 'mdi mdi-view-quilt'
+        includes: eyc
+        children:
+            nivel:
+                title: 'Definir nivel estructural'
+                type: link
+                state: eyc.nivelestructural
+            gestionar:
+                title: 'Gestionar estructuras'
+                type: link
+                state: eyc.estructuras
+            nomenclador:
+                title: 'Gestionar nomencladores'
+                type: link
+                state: eyc.nomenclador

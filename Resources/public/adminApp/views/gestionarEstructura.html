@@ -1,0 +1,183 @@
+
+<div ng-style="capa1">
+    <div ng-style="listadoNomencladores">
+        <md-toolbar  class="md-panel-toolbar">
+            <div class="md-toolbar-tools">
+                Estructuras<span flex></span>
+                <!--<md-menu>-->
+                    <!--<md-button class="md-icon-button" ng-click="$mdOpenMenu($event)">-->
+                        <!--<md-tooltip>-->
+                            <!--Adicionar-->
+                        <!--</md-tooltip>-->
+                        <!--<i class="mdi mdi-plus-circle-outline i-24"></i>-->
+                    <!--</md-button>-->
+                    <!--<md-menu-content>-->
+                        <!--<md-menu-item ng-repeat="item in estructurasRaiz">-->
+                            <!--<md-button ng-click="adicionarInstRaiz(item)">-->
+                                <!--<i class="mdi mdi-sitemap i-24"></i>-->
+                                <!--{{item.nombre}}-->
+                            <!--</md-button>-->
+                        <!--</md-menu-item>-->
+                    <!--</md-menu-content>-->
+                <!--</md-menu>-->
+                <md-button class="md-icon-button" ng-click="cambiarEstilo()">
+                    <md-tooltip>
+                        Ocultar panel
+                    </md-tooltip>
+                    <i class="mdi mdi-chevron-double-left i-24"></i>
+                </md-button>
+            </div>
+        </md-toolbar>
+        <div layout="column" style="background: white;margin-top: 5px; font-family: 'Roboto'; font-size: 15px;">
+            <div ng-style="estilo">
+                <treecontrol class="tree-classic" tree-model="arbolEstructura" expanded-nodes="expandedNodes2" on-selection="showSelected(node,selected)"
+                             selected-node="node2">
+                    {{ node.nombre }}
+                </treecontrol>
+            </div>
+        </div>
+    </div>
+    <div ng-style="listadoNomencladores2">
+        <div layout="column" style="background: white; height: 500px;">
+            <md-toolbar>
+                <div>
+                    <md-button class="md-icon-button" ng-click="cambiarEstilo2()">
+                        <md-tooltip>
+                            Mostrar panel
+                        </md-tooltip>
+                        <i class="mdi mdi-chevron-double-right i-24"></i>
+                    </md-button>
+                </div>
+            </md-toolbar>
+        </div>
+    </div>
+
+    <div >
+        <div ng-style="barraTablaNomenc" layout="column">
+            <md-toolbar class="md-panel-toolbar mobile ng-scope" ng-show="!selected.length">
+                <div class="md-toolbar-tools ng-hide" data-ng-hide="selected.length || filter.show">
+                    <h3>Estructuras ({{listaInstancia.count}})</h3>
+                    <span flex></span>
+                    <md-button ng-style="oculto" class="md-icon-button" data-ng-click="filter.show = true"
+                               aria-label="Search">
+                        <md-tooltip>
+                            Buscar
+                        </md-tooltip>
+                        <i class="mdi mdi-magnify i-24"></i>
+                    </md-button>
+                    <md-menu>
+                    <md-button ng-style="oculto" ng-disabled="addDisab" class="md-icon-button" ng-click="$mdOpenMenu($event)">
+                    <md-tooltip>
+                    Adicionar
+                    </md-tooltip>
+                    <i class="mdi mdi-plus-circle-outline i-24"></i>
+                    </md-button>
+                    <md-menu-content>
+                    <md-menu-item ng-repeat="item in estructuras">
+                    <md-button ng-click="adicionarInst(item)">
+                    <i class="mdi mdi-sitemap i-24"></i>
+                    {{item.nombre}}
+                    </md-button>
+                    </md-menu-item>
+                    </md-menu-content>
+                    </md-menu>
+                    <!--<md-button ng-style="oculto" class="md-icon-button" ng-click="adicionarInstancia()">-->
+                        <!--<md-tooltip>-->
+                            <!--Adicionar-->
+                        <!--</md-tooltip>-->
+                        <!--<i class="mdi mdi-plus-circle-outline i-24"></i>-->
+                    <!--</md-button>-->
+                </div>
+                <div class="md-toolbar-tools" data-ng-show="filter.show && !selected.length">
+                    <form flex name="filter.form">
+                        <md-input-container md-no-float class="md-block" md-theme="docs-dark">
+                            <input ng-style="oculto" type="text" ng-model="query.filter" ng-model-options="filter.options" placeholder="Buscar">
+                        </md-input-container>
+                    </form>
+                    <md-button class="md-icon-button" ng-style="oculto" ng-click="removeFilter()">
+                        <i class="mdi mdi-close i-24"></i>
+                    </md-button>
+                </div>
+            </md-toolbar>
+
+            <md-toolbar class="md-table-toolbar alternate" ng-show="selected.length">
+                <div class="md-toolbar-tools">
+                    <span>{{selected.length}} {{selected.length > 1 ? 'estructuras' : 'estructura'}} seleccionado(s)</span>
+                    <span flex></span>
+                    <md-button class="md-icon-button" ng-click="editarInst(selected)" ng-show="selected.length == 1">
+                        <md-tooltip>
+                            Editar
+                        </md-tooltip>
+                        <i class="mdi mdi-pencil i-24"></i>
+                    </md-button>
+                    <md-button class="md-icon-button" ng-click="eliminarInstancia(selected)">
+                        <md-tooltip>
+                            Eliminar
+                        </md-tooltip>
+                        <i class="mdi mdi-delete-forever i-24"></i>
+                    </md-button>
+                </div>
+            </md-toolbar>
+        </div>
+        <div ng-style="tablaNomc" layout="column" style="background: white; padding: 0 16px; margin-left: 10px;">
+            <md-table-container>
+                <table data-md-table data-md-row-select="!hideCheckboxes"
+                       data-ng-model="selected" md-progress="promise">
+                    <thead ng-if="!hideHead" md-head data-md-order="query.order" md-on-reorder="onReorder">
+                    <tr md-row>
+                        <th md-column data-md-order-by="id"><span>ID</span>
+                        <th md-column data-md-order-by="nombre"><span>Nombre Instancia</span>
+                        <th md-column data-md-order-by="estructura"><span>Estructura</span>
+                        </th>
+                        <!--<th data-ng-repeat="columna in listaCampos.data" md-column><span>{{columna.nombre}}</span>-->
+                        <!--</th>-->
+                    </tr>
+                    </thead>
+                    <tbody md-body>
+                    <tr md-row md-select="instancia" data-md-on-select="log" md-on-deselect="deselect"
+                        x-md-auto-select="!blah"
+                        data-ng-repeat="instancia in listaInstancia.valores">
+                        <td md-cell ng-model="instancia.IdEop">
+                            {{instancia.IdEop}}
+                        </td>
+                        <td md-cell ng-model="instancia.NomEOP">
+                            {{instancia.NomEOP}}
+                        </td>
+                        <td md-cell ng-model="instancia.nomEstruc">
+                            {{instancia.nomEstruc}}
+                        </td>
+                        <!--<td md-cell data-ng-repeat="fila in instancia.valores track by $index ">-->
+                            <!--{{fila}}-->
+                        <!--</td>-->
+                    </tr>
+                    </tbody>
+                </table>
+            </md-table-container>
+
+            <data-md-table-pagination md-limit="query.limit" md-page="query.page" md-total="{{listaInstancia.count}}"
+                                      md-on-paginate="onPaginate" md-page-select>
+            </data-md-table-pagination>
+            {{tr}}
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+        <!--<div class="menus"  layout-wrap layout="row" layout-fill layout-align="space-between center" style="min-height:200px;">-->
+            <!--<div layout="column" flex="33" flex-sm="100" layout-align="center center">-->
+                <!---->
+
+            <!--</div>           -->
+        <!--</div>-->
+    <!---->
+
+
+

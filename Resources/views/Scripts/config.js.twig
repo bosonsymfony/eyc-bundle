@@ -1,0 +1,133 @@
+/**
+ * Created by killer on 19/01/16.
+ */
+
+angular.module('app')
+        .run(
+                ['$rootScope',
+                    function ($rootScope) {
+
+                    }
+                ]
+        )
+        .config(
+                ['$stateProvider',
+                    function ($stateProvider) {
+
+                        //routes here
+                        $stateProvider
+                                .state('eyc', {
+                                    abstract: true,
+                                    url: '/eyc',
+                                    views: {
+                                        '': {
+                                            templateUrl: '{{ path('backend_layout')|raw }}'
+                                        },
+                                        'aside': {
+                                            templateUrl: '{{ path('backend_aside')|raw }}'
+                                        },
+                                        'content': {
+                                            templateUrl: '{{ path('backend_content')|raw }}'
+                                        }
+                                    }
+                                })
+                                .state('eyc.nivelestructural', {
+                                    url: '/nivelestructural',
+                                    templateUrl: '{{ asset('bundles/eyc/adminApp/views/nivelEstructural.html')|raw }}',
+                                    controller: 'eycNivelEstructuralCtrl',
+                                    data: {
+                                        title: 'Definir nivel estructural'
+                                    },
+                                    resolve: load(
+                                            [
+                                                {
+                                                name: 'treeControl',
+                                                files: [
+                                                '{{ asset('bundles/backend/node_modules/angular-tree-control/angular-tree-control.js')|raw }}',
+                                                '{{ asset('bundles/backend/node_modules/angular-tree-control/css/tree-control-attribute.css')|raw }}',
+                                                '{{ asset('bundles/backend/node_modules/angular-tree-control/css/tree-control.css')|raw }}',
+                                                ]
+                                                },
+                                                {
+                                                    files: [
+                                                        '{{ asset('bundles/eyc/js/moment.js')|raw }}',
+                                                        '{{ asset('bundles/eyc/adminApp/controllers/eycNivelEstructuralCtrl.js')|raw }}',
+'{{ asset('bundles/eyc/adminApp/services/eycEstructuraRelacionesSvc.js')|raw }}',
+'{{ asset('bundles/eyc/adminApp/services/eycEstructuraSvc.js')|raw }}'
+                                                    ]
+                                                }
+                                            ]
+                                    )
+                                })
+                                .state('eyc.nomenclador', {
+                                    url: '/nomencladores',
+                                    templateUrl: '{{ asset('bundles/eyc/adminApp/views/gestionarNomenclador.html')|raw }}',
+                                    controller: 'eycNomencladorCtrl',
+                                    data: {
+                                        title: 'Gestionar nomencladores'
+                                    },
+                                    resolve: load(
+                                            [
+
+{
+name: 'treeControl',
+files: [
+                                                        '{{ asset('bundles/backend/node_modules/angular-tree-control/angular-tree-control.js')|raw }}',
+                                                        '{{ asset('bundles/backend/node_modules/angular-tree-control/css/tree-control-attribute.css')|raw }}',
+                                                        '{{ asset('bundles/backend/node_modules/angular-tree-control/css/tree-control.css')|raw }}',
+]
+},
+                                                {
+                                                    files: [
+
+                                                        '{{ asset('bundles/eyc/adminApp/controllers/eycNomencladorCtrl.js')|raw }}',
+                                                        '{{ asset('bundles/eyc/js/moment.js')|raw }}',
+'{{ asset('bundles/eyc/adminApp/services/eycNomencladorSvc.js')|raw }}'
+                                                    ]
+                                                }
+                                            ]
+                                    )
+                                })
+                                .state('eyc.estructuras', {
+                                    url: '/estructuras',
+                                    templateUrl: '{{ asset('bundles/eyc/adminApp/views/gestionarEstructura.html')|raw }}',
+                                    controller: 'eycEstructuraCtrl',
+                                    data: {
+                                        title: 'Gestionar estructuras'
+                                    },
+                                    resolve: load(
+                                            [
+
+                                                {
+                                                    name: 'treeControl',
+                                                    files: [
+                                                        '{{ asset('bundles/backend/node_modules/angular-tree-control/angular-tree-control.js')|raw }}',
+                                                        '{{ asset('bundles/backend/node_modules/angular-tree-control/css/tree-control-attribute.css')|raw }}',
+                                                        '{{ asset('bundles/backend/node_modules/angular-tree-control/css/tree-control.css')|raw }}',
+                                                     ]
+                                                },
+                                                {
+                                                    files: [
+
+                                                       '{{ asset('bundles/eyc/js/moment.js')|raw }}',
+                                                        '{{ asset('bundles/eyc/adminApp/controllers/eycEstructuraCtrl.js')|raw }}',
+'{{ asset('bundles/eyc/adminApp/services/eycEstructuraRelacionesSvc.js')|raw }}',
+'{{ asset('bundles/eyc/adminApp/services/eycEstructuraSvc.js')|raw }}'
+                                                    ]
+                                                }
+                                            ]
+                                    )
+                                });
+
+                        function load(src) {
+                            return {
+                                deps: ['$ocLazyLoad',
+                                    function ($ocLazyLoad) {
+                                        return $ocLazyLoad.load(src);
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                ]
+        );

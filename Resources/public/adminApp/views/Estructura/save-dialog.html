@@ -1,0 +1,41 @@
+<md-dialog>
+    <md-toolbar class="md-panel-toolbar">
+        <div class="md-toolbar-tools">
+            <h3>
+                Nuevo(a) Estructura
+            </h3>
+            <span flex=""></span>
+            <md-button class="md-icon-button" ng-click="cancel()">
+                <i class="mdi mdi-close i-24"></i>
+            </md-button>
+        </div>
+    </md-toolbar>
+    <md-dialog-content class="md-dialog-content">
+        <form name="form"
+          method="post" action="">    <div ng-messages="errors.eycbundle_estructura">
+        <div ng-repeat="message in errors.eycbundle_estructura" ng-bind="message"></div>
+    </div>                    <div layout-gt-sm="row">
+        <md-input-container class="md-block" flex-gt-sm>
+                            <label class="required">Nombre</label>
+                <input type="text" name="eycbundle_estructura[nombre]" ng-model="entity['eycbundle_estructura[nombre]']" required="required" maxlength="255" />
+            <div ng-messages="errors.nombre">
+        <div ng-repeat="message in errors.nombre" ng-bind="message"></div>
+    </div>
+    </md-input-container>            <md-input-container class="md-block" flex-gt-sm>
+                        <md-checkbox name="eycbundle_estructura[raiz]" ng-model="entity['eycbundle_estructura[raiz]']" required="required" ng-false-value="null">
+        Raiz
+    </md-checkbox>
+            <div ng-messages="errors.raiz">
+        <div ng-repeat="message in errors.raiz" ng-bind="message"></div>
+    </div>
+    </md-input-container>            </div>
+                                <div layout-gt-sm="row">
+        <input type="hidden" name="eycbundle_estructura[_token]" ng-model="entity['eycbundle_estructura[_token]']" value="Hc8k_lATGb-a07lZzYFlsuSy2Oq1al70soJ_W7pCo50" />            </div>
+            </form>
+    </md-dialog-content>
+    <div class="md-actions">
+        <md-button class="md-primary md-raised" ng-disabled="!form.$valid" ng-click="accept(form)">Aceptar</md-button>
+        <md-button class="md-raised" ng-disabled="!form.$valid" ng-click="apply(form)">Aplicar</md-button>
+        <md-button class="md-primary" ng-click="cancel()">Cancelar</md-button>
+    </div>
+</md-dialog>
