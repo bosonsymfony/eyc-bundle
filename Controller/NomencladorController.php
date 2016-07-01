@@ -105,7 +105,7 @@ class NomencladorController extends Controller
         $existe = $em->getRepository('EyCBundle:Nomenclador')->findBy(array('nombre'=>$nombre));
 
         if($existe){
-            return new Response('400 POST: El nomenclador que intenta adicionar con el nombre '.$nombre.' ya exite');
+            return new Response('400 POST:Existe un nomenclador con el mismo nombre.');
         }else{
              $result = $this->get('nomenclador')->insertarNom($nombre);
          if ($result == 1) {
@@ -130,7 +130,7 @@ class NomencladorController extends Controller
         $existe = $em->getRepository('EyCBundle:Nomenclador')->findBy(array('nombre'=>$nombre));
 
         if($existe){
-            return new Response('400 POST: Existe un campo con el mismo nombre');
+            return new Response('400 POST: Existe un nomenclador con el mismo nombre');
 
         }else{
 
@@ -235,7 +235,7 @@ class NomencladorController extends Controller
 
         if($existe){
 
-            return new Response('404 POST: Existe un campo con el mismo nombre');
+            return new Response('404 POST: Existe un campo con el mismo nombre.');
 
         }else{
 

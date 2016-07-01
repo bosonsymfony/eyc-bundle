@@ -144,7 +144,7 @@ class EstructuraController extends Controller
 
 
         if ($existe) {
-            return new Response('400 POST: La estructura que intenta adicionar con el nombre ' . $nombre . ' ya exite');
+            return new Response('400 POST: Existe una estructura con el mismo nombre.');
         } else {
             if (is_bool($raiz)) {
                 $this->get('estructura')->insertarEstruc($nombre, $raiz);
@@ -182,7 +182,7 @@ class EstructuraController extends Controller
 
         if ($existe[0]['id'] != $id) {
 
-            return new Response('400 POST: La estructura que intenta actualizar con el nombre ' . $nombre . ' ya exite');
+            return new Response('400 POST: Existe una estructura con el mismo nombre.');
 
         } else {
 
@@ -679,7 +679,7 @@ class EstructuraController extends Controller
 
         if ($existe) {
 
-            return new Response('404 POST: La estructura que intenta adicionar con el nombre ' . $nombre . ' ya existe.');
+            return new Response('404 POST: Existe un campo con el mismo nombre.');
 
         } else {
 
