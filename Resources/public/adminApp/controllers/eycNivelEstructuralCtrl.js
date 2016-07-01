@@ -827,7 +827,7 @@ angular.module('app')
                 '<md-content layout-padding>' +
                 '<div>' +
                 '<form>' +
-                '<p ng-if="!elimRel">¿Está seguro que desea eliminar el(los) elemento(s) seleccionado(s)?</p>' +
+                '<p ng-if="!elimRel">¿Está seguro que desea eliminar el(los) elemento(s) seleccionado(s)?¿Está seguro que desea eliminar el(los) elemento(s) seleccionado(s)?</p>' +
                 '<p ng-if="elimRel">¿Está seguro que desea eliminar la(las) estructura(s) y las relaciones de la misma?</p>' +
                 '<div class="md-actions">' +
                 '<md-button class="md-primary md-raised" ng-click="delete(); des();">Aceptar</md-button>' +

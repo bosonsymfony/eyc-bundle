@@ -749,9 +749,9 @@ angular.module('app')
                 '<md-content layout-padding>' +
                 '<div>' +
                 '<form>' +
-                '<p>¿Confirma que desea eliminar la(s) instancia(s) de la estructura?</p>' +
+                '<p>¿Está seguro que desea eliminar el(los) elemento(s) seleccionado(s)?</p>' +
                 '<div class="md-actions">' +
-                '<md-button class="md-primary md-raised" ng-click="delete()">Eliminar</md-button>' +
+                '<md-button class="md-primary md-raised" ng-click="delete()">Aceptar</md-button>' +
                 '<md-button class="md-primary" ng-click="cancel()">Cancelar</md-button>' +
                 '</div>' +
                 '</form>' +
