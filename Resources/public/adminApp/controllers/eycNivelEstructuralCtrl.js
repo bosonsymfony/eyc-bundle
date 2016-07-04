@@ -664,7 +664,7 @@ angular.module('app')
                 clickOutsideToClose: false,
                 template: '<md-toolbar class="md-panel-toolbar">' +
                 '<div class="md-toolbar-tools">' +
-                '<h3>Adicionar estructura</h3>' +
+                '<h3>Adicionar</h3>' +
                 '<span flex=""></span>' +
                 '<md-button class="md-icon-button" ng-click="cerrar()" >' +
                 '<i class="icon mdi mdi-close i-24"></i>' +
