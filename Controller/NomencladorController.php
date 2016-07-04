@@ -305,7 +305,7 @@ class NomencladorController extends Controller
     {
         $result = $this->get('nomenclador')->eliminarCampoNom($id);
         if ($result == 1) {
-            return new Response('200 Delete: El nomenclador se eliminó con exito');
+            return new Response('200 Delete: El nomenclador se eliminó con exito.');
         } else
             return new Response('404 Delete: El nomenclador solicitado con el identificador ' . $id . ' no existe.');
     }
