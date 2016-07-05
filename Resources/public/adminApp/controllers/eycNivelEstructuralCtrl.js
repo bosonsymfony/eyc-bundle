@@ -1166,7 +1166,7 @@ angular.module('app')
                     '</md-input-container>' +
                     '<md-input-container class="md-block">' +
                     '<label >NomencladorVin</label>' +
-                    '<md-select ng-disabled="checkDisab" ng-model="nomVinCampo" >' +
+                    '<md-select ng-change="nuevo();" ng-disabled="checkDisab" ng-model="nomVinCampo" >' +
                     '<md-option ng-repeat="id in listaIDS track by $index " value="{{id.id}}">' +
                     '{{id.nombre}}' +
                     '</md-option>' +
@@ -1176,8 +1176,8 @@ angular.module('app')
                     '</div>' +
                     '</md-input-container>' +
                     '<div class="md-actions">' +
-                    '<md-button class="md-primary md-raised" ng-disabled="!campo.$valid || disab ||campo.nombre.$error.pattern" ng-click="add(); des();">Aceptar</md-button>' +
-                    '<md-button class="md-raised" ng-disabled="!campo.$valid || disab ||campo.nombre.$error.pattern" ng-click="aplicar(); des();">Aplicar</md-button>' +
+                    '<md-button class="md-primary md-raised" ng-disabled="!campo.$valid || disab ||campo.nombre.$error.pattern || noEscogido" ng-click="add(); des();">Adicionar</md-button>' +
+                    '<md-button class="md-raised" ng-disabled="!campo.$valid || disab ||campo.nombre.$error.pattern || noEscogido" ng-click="aplicar(); des();">Aplicar</md-button>' +
                     '<md-button class="md-primary" ng-click="cancel()">Cancelar</md-button>' +
                     '</div>' +
                     '</form>' +
@@ -1195,20 +1195,32 @@ angular.module('app')
                     $scope.vinCampo = false;
                     $scope.disab = false;
                     $scope.checkDisab = true;
+                    $scope.noEscogido = false;
 
                     $scope.des = function () {
                         $scope.disab = true;
+                    };
+
+                    $scope.nuevo = function(){
+                        if($scope.nomVinCampo != undefined){
+                            $scope.noEscogido = false;
+                        }else{
+                            $scope.noEscogido = true;
+                        }
                     };
 
                     $scope.toggle = function () {
                         if (!$scope.vinCampo) {
                             $scope.checkDisab = false;
                             $scope.tipoCampo = 'integer';
+                            $scope.noEscogido = true;
                         } else {
                             $scope.nomVinCampo = "";
                             $scope.checkDisab = true;
+                            $scope.noEscogido = true;
                         }
                     };
+
 
                     $scope.cancel = function () {
                         $mdDialog.cancel();
