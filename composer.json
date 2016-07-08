@@ -1,0 +1,35 @@
+{
+  "name": "boson/eyc-bundle",
+  "license": "MIT",
+  "type": "symfony-bundle",
+  "description": "Paquete de Estrctura y Nomencladores con patrón EAV de Boson",
+    "authors": [
+        {
+            "name": "Dannel Jimenez Torres",
+            "email": "djtorres@uci.cu"
+        }
+    ],"autoload": {
+    "psr-0": {"UCI\\Boson\\EyCBundle": ""}
+  },
+
+  "target-dir": "UCI/Boson/EyCBundle",
+  "require": {
+    "symfony/symfony": "~2.7.0"
+  },
+  "require-dev": {
+      "symfony/symfony": "~2.7.0"
+  },
+     "minimum-stability": "dev",
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0.x-dev",
+            "dev-b2.3":   "1.0.x-dev",
+            "dev-b2.7":   "1.1.x-dev"
+        }
+    },
+  "config": {
+    "platform": {
+      "php": ">=5.4"
+    }
+  }
+}
