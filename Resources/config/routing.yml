@@ -1,5 +1,5 @@
 eyc:
-    resource: @EyCBundle/Controller/
+    resource: "@EyCBundle/Controller/"
     type: annotation
 
 #ey_c_estructura:
