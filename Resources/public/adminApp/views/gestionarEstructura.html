@@ -154,7 +154,7 @@
                 </table>
             </md-table-container>
 
-            <data-md-table-pagination md-limit="query.limit" md-page="query.page" md-total="{{listaInstancia.count}}"
+            <data-md-table-pagination md-label="{{$labelPagination}}" md-limit="query.limit" md-page="query.page" md-total="{{listaInstancia.count}}"
                                       md-on-paginate="onPaginate" md-page-select>
             </data-md-table-pagination>
             {{tr}}

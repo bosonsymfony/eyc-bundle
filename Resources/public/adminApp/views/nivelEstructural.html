@@ -87,7 +87,7 @@
                 </table>
             </md-table-container>
 
-            <data-md-table-pagination md-limit="query.limit" md-page="query.page" md-total="{{listaEstructuras.count}}"
+            <data-md-table-pagination md-label="{{$labelPagination}}" md-limit="query.limit" md-page="query.page" md-total="{{listaEstructuras.count}}"
                                       md-on-paginate="onPaginate" md-page-select>
             </data-md-table-pagination>
         </div>
@@ -141,7 +141,7 @@
                 </table>
             </md-table-container>
 
-            <data-md-table-pagination md-limit="query2.limit" md-page="query2.page" md-total="{{relaciones.count}}"
+            <data-md-table-pagination md-label="{{$labelPagination}}" md-limit="query2.limit" md-page="query2.page" md-total="{{relaciones.count}}"
                                       md-on-paginate="onPaginate2" md-page-select>
             </data-md-table-pagination>
         </div>
@@ -235,7 +235,7 @@
                 </tbody>
             </table>
         </md-table-container>
-        <data-md-table-pagination md-limit="query3.limit" md-page="query3.page" md-total="{{listaCampos.count}}"
+        <data-md-table-pagination md-label="{{$labelPagination}}" md-limit="query3.limit" md-page="query3.page" md-total="{{listaCampos.count}}"
                                   md-on-paginate="onPaginate3" md-page-select>
         </data-md-table-pagination>
     </div>
