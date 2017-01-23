@@ -155,6 +155,19 @@ class EstructuraController extends Controller
         }
     }
 
+    public function cantHijas($id){
+        $em = $this->get('doctrine.orm.entity_manager');
+        $hijos = $em->createQueryBuilder()
+            ->select('estructura', 'estructuras_hijas')
+            ->from('EyCBundle:Estructura', 'estructura')
+            ->join('estructura.estructurasHijas', 'estructuras_hijas')
+            ->where("estructura.id = $id")
+            ->getQuery()
+            ->getArrayResult();
+
+        return count($hijos);
+    }
+
     /**
      * Actualiza un estructura dado el id
      * Responde al RF53 Modificar estructura
@@ -180,12 +193,18 @@ class EstructuraController extends Controller
             ->getQuery()
             ->getArrayResult();
 
-        if ($existe[0]['id'] != $id) {
+//            return new Response('400 POST: Un nodo hijo no puede ser raiz.');
 
-            return new Response('400 POST: Existe una estructura con el mismo nombre.');
+        $estructura = $em->getRepository('EyCBundle:Estructura')->find($id);
 
+        if(count($estructura->getEstructurasPadres())&&$raiz==true){
+            return new Response('400 PUT: La estructura no puede ser raiz debido a que es hija de otra estructura.');
+        }
+
+
+        if ($existe && $existe[0]['id'] != $id) {
+              return new Response('400 POST: Existe una estructura con el mismo nombre.');
         } else {
-
             if (is_bool($raiz)) {
                 $result = $this->get('estructura')->actualizarEstruc($id, $nombre, $raiz);
 
@@ -223,6 +242,8 @@ class EstructuraController extends Controller
 
         }
     }
+
+
 
     /**
      * Elimina una estructura hija dado el id del padre
